@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { WeatherModule } from './weather/weather.module';
+import { HistoryModule } from './history/history.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule,
+    WeatherModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

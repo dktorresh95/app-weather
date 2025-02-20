@@ -9,4 +9,5 @@
     <button type="submit" [disabled]="searchForm.invalid" >Buscar</button>
 </form>
 
-<app-weather-results [data]="weatherSelected" [errorMessage]="errorMessage"></app-weather-results>
+<app-history-list (citySelected)="selectCity($event)"></app-history-list>
+<app-weather-results [data]="weatherSelected" [errorMessage]="errorMessage" [city]="city"></app-weather-results>

@@ -1,1 +1,9 @@
-<p>history-list works!</p>
+<div *ngIf="history.length > 0">
+  <h3>Historial de búsqueda</h3>
+  <ul>
+    <li *ngFor="let city of history" (click)="onSelectCity(city)">
+      {{ city }}
+    </li>
+  </ul>
+  <button (click)="clearHistory()">Limpiar historial</button>
+</div>

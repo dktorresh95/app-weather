@@ -10,7 +10,8 @@ import { WeatherApiService } from '../services/weather-api.service';
 })
 export class WeatherComponent {
   weatherSelected: any = null;
-  errorMessage: any = '';
+  errorMessage: string = '';
+  city: string = '';
   searchForm = new FormGroup({
     city: new FormControl('', [Validators.required, Validators.minLength(2)]),
   });
@@ -25,10 +26,11 @@ export class WeatherComponent {
 
   onSubmit() {
     if (this.searchForm.valid) {
-      const city = this.searchForm.value.city;
-      this.weatherService.getWeather(city || '').subscribe({
+      this.city = this.searchForm.value.city || '';
+      this.weatherService.getWeather(this.city || '').subscribe({
         next: (data) => {
           this.weatherSelected = data;
+          this.saveHistory(this.city);
         },
         error: () => {
           this.weatherSelected = null;
@@ -36,5 +38,19 @@ export class WeatherComponent {
         },
       });
     }
+  }
+
+  saveHistory(city: any) {
+    let history = JSON.parse(localStorage.getItem("weatherCities") || '[]');
+    if (!history.includes(city)) {
+      history.unshift(city);
+      if (history.length > 10) history.pop();
+      localStorage.setItem('weatherCities', JSON.stringify(history));
+    }
+  }
+
+  selectCity(city: string) {
+    this.searchForm.get("city")?.setValue(city);
+    this.onSubmit();
   }
 }

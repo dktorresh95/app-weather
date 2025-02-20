@@ -14,6 +14,9 @@ import { HistoryListComponent } from './history-list/history-list.component';
   imports: [
     CommonModule,
     HistoryRoutingModule
+  ],
+  exports: [
+    HistoryListComponent
   ]
 })
 export class HistoryModule { }

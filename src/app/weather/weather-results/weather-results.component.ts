@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FavoritesService } from 'src/app/services/favorites.service';
 
 @Component({
   selector: 'app-weather-results',
@@ -7,6 +8,16 @@ import { Component, Input } from '@angular/core';
 })
 export class WeatherResultsComponent {
 
+  @Input() city: string = '';
   @Input() data: any;
   @Input() errorMessage: string = '';
+  isFavorite: boolean = false;
+
+  constructor(private favoritesService: FavoritesService) {
+
+  }
+  addFavorite() {
+    this.favoritesService.addFavorite(this.city);
+    this.isFavorite = true;
+  }
 }
