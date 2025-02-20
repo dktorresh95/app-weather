@@ -5,17 +5,17 @@ const routes: Routes = [
   {
     path: 'weather',
     loadChildren: () =>
-      import('./weather/weather.module').then((m) => m.WeatherModule),
+      import('./components/weather/weather.module').then((m) => m.WeatherModule),
   },
   {
     path: 'history',
     loadChildren: () =>
-      import('./history/history.module').then((m) => m.HistoryModule),
+      import('./components/history/history.module').then((m) => m.HistoryModule),
   },
   {
     path: 'favorites',
     loadChildren: () =>
-      import('./favorites/favorites.module').then((m) => m.FavoritesModule),
+      import('./components/favorites/favorites.module').then((m) => m.FavoritesModule),
   },
 ];
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, Observable, switchMap } from 'rxjs';
-import { WeatherApiService } from '../services/weather-api.service';
-import { WeatherResponse } from '../models/response.model';
+import { WeatherApiService } from '../../services/weather-api.service';
+import { WeatherResponse } from '../../models/response.model';
 import { Router } from '@angular/router';
 
 @Component({
