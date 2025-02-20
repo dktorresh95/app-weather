@@ -16,7 +16,6 @@ export class WeatherApiService {
     if (this.cache.has(city)) {
       return this.cache.get(city)!;
     }
-
     const request = this.http.get(`${this.apiUrl}/current.json?key=${this.apiKey}&q=${city}`)
       .pipe(
         shareReplay(1),
