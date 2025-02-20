@@ -1,19 +1,20 @@
-<table>
-    <thead>
+<div class="overflow-x-auto">
+  <table class="w-full text-sm text-left text-gray-500 border border-gray-300 my-8">
+    <thead class="bg-gray-700 text-white">
       <tr>
-        <th>Ciudad</th>
-        <th>Temperatura (°C)</th>
-        <th>Estado</th>
-        <th>Hora Local</th>
+        <th class="px-6 py-3">Ciudad</th>
+        <th class="px-6 py-3">Temperatura (°C)</th>
+        <th class="px-6 py-3">Estado</th>
+        <th class="px-6 py-3">Hora Local</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let city of history">
-        <td>{{ city.location.name }}</td>
-        <td>{{ city.current.temp_c }}°C</td>
-        <td>{{ city.current.condition.text }}</td>
-        <td>{{ city.location.localtime }}</td>
+      <tr *ngFor="let city of history" class="border-b bg-white hover:bg-gray-100">
+        <td class="px-6 py-4">{{ city.location.name }}</td>
+        <td class="px-6 py-4">{{ city.current.temp_c }}°C</td>
+        <td class="px-6 py-4">{{ city.current.condition.text }}</td>
+        <td class="px-6 py-4">{{ city.location.localtime }}</td>
       </tr>
     </tbody>
   </table>
-  
+</div>

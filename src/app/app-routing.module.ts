@@ -8,14 +8,13 @@ const routes: Routes = [
       import('./components/weather/weather.module').then((m) => m.WeatherModule),
   },
   {
-    path: 'history',
-    loadChildren: () =>
-      import('./components/history/history.module').then((m) => m.HistoryModule),
-  },
-  {
     path: 'favorites',
     loadChildren: () =>
       import('./components/favorites/favorites.module').then((m) => m.FavoritesModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'weather',
   },
 ];
 

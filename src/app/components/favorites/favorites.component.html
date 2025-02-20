@@ -1,11 +1,12 @@
-<div *ngIf="favorites.length > 0; else noContent">
-  <h3>Ciudades Favoritas</h3>
+<div *ngIf="favorites.length > 0; else noContent" class="max-w-lg mx-auto p-4 bg-white shadow-lg rounded-lg">
+  <h3 class="text-4xl font-extrabold dark:text-white my-4">Ciudades Favoritas</h3>
   <ul>
     <li *ngFor="let city of favorites">
       {{ city }}
-      <button (click)="removeFavorite(city)">Quitar de favs</button>
+      <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" (click)="removeFavorite(city)">Quitar de favs</button>
     </li>
   </ul>
+  <button (click)="back()" class="mt-8 w-full bg-gray-700 text-white p-2 rounded-md hover:bg-gray-800">Regresar</button>
 </div>
 
 <ng-template #noContent>

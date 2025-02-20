@@ -1,5 +1,5 @@
-<div *ngIf="data; else errorTemplate">
-  <h2>
+<div *ngIf="data; else errorTemplate" >
+  <h2 class="text-4xl font-extrabold dark:text-white my-4">
     Clima en {{ data.location.name }}, {{ data.location.country }}
   </h2>
   <div class="weather-info">
@@ -20,7 +20,7 @@
     <p>Hora local: {{ data.location.localtime }}</p>
   </div>
 
-  <button *ngIf="!isFavorite" (click)="addFavorite()">Agregar a favoritos</button>
+  <button class="mt-8 w-full bg-gray-700 text-white p-2 rounded-md hover:bg-gray-800" *ngIf="!isFavorite" (click)="addFavorite()">Agregar a favoritos</button>
 </div>
 
 <ng-template #errorTemplate>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FavoritesService } from '../../services/favorites.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorites',
@@ -9,7 +10,7 @@ import { FavoritesService } from '../../services/favorites.service';
 export class FavoritesComponent {
   favorites: string[] = [];
 
-  constructor(private favoritesService: FavoritesService) {
+  constructor(private favoritesService: FavoritesService, private router: Router) {
     this.loadFavorites();
   }
 
@@ -20,5 +21,9 @@ export class FavoritesComponent {
   removeFavorite(city: string) {
     this.favoritesService.removeFavorite(city);
     this.loadFavorites();
+  }
+
+  back() {
+    this.router.navigate(['/weather'])
   }
 }
