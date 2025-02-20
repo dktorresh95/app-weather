@@ -7,6 +7,9 @@ import { WeatherResultsComponent } from './weather-results/weather-results.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { HistoryModule } from '../history/history.module';
 import { WeatherTableComponent } from './weather-table/weather-table.component';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -19,7 +22,8 @@ import { WeatherTableComponent } from './weather-table/weather-table.component';
     CommonModule,
     ReactiveFormsModule,
     WeatherRoutingModule,
-    HistoryModule
+    HistoryModule,
+    TranslateModule
   ]
 })
 export class WeatherModule { }

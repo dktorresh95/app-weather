@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HistoryRoutingModule } from './history-routing.module';
 import { HistoryListComponent } from './history-list/history-list.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { HistoryListComponent } from './history-list/history-list.component';
   ],
   imports: [
     CommonModule,
-    HistoryRoutingModule
+    HistoryRoutingModule,
+    TranslateModule
   ],
   exports: [
     HistoryListComponent

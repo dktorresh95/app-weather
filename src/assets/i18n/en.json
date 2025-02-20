@@ -1,0 +1,23 @@
+{
+  "weather": {
+      "search_placeholder": "Enter a city...",
+      "required": "This field is required",
+      "search_button": "Search",
+      "favorites_button": "View Favorites",
+      "table-searchs": "View last searches table",
+      "temperature": "Temperature (°C)",
+      "state": "State",
+      "locale": "Local time",
+      "city": "City"
+  },
+  "favorites": {
+      "cities": "Favorite Cities",
+      "no_found": "There is currently no favorites list",
+      "back": "Go back",
+      "delete": "Remove from favorites"
+  },
+  "history": {
+      "title": "Search History",
+      "clean": "Clear history"
+  }
+}
