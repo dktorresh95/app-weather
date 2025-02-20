@@ -2,6 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
 
+Para el proyecto, basta con clonarlo, un npm install y correrlo con npm start
+Para ejecutar pruebas unitarias ng test
+
+
+##Weather API
+
+Se crearon dos servicios, uno para las apis de weather api, se utilizaron dos servicios, uno para obtener las sugerencias de ciudades
+y otro para el detalle por ciudad.
+Se creó servicio de favorites para la gestion del localStorage al almacenar los favoritos
+Para optimizaciones se hace uso de caching, almacenando las búsquedas ya realizadas y evitando volver a hacer la petición
+Se realizó implementación de internacionalizacion, puede ponerse en inglés o español la app
+Se hizo uso de Tailwind para los estilos
+Se utilizaron diferentes módulos, para histórico, clima, favoritos. Para el tema de routing se implementó lazyLoading
+Las pruebas unitarias fueron realizadas con Karma y Jasmine
+Se hizo uso de algunos operadores RxJs para el manejo de los datos asíncronos
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
