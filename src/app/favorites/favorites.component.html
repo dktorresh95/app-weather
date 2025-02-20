@@ -1,1 +1,7 @@
-<p>favorites works!</p>
+<h3>Ciudades Favoritas</h3>
+<ul>
+  <li *ngFor="let city of favorites">
+    {{ city }} 
+    <button (click)="removeFavorite(city)">Quitar de favs</button>
+  </li>
+</ul>

@@ -20,7 +20,7 @@
     <p>Hora local: {{ data.location.localtime }}</p>
   </div>
 
-  <button *ngIf="isFavorite" (click)="addFavorite()">Agregar a favoritos</button>
+  <button *ngIf="!isFavorite" (click)="addFavorite()">Agregar a favoritos</button>
 </div>
 
 <ng-template #errorTemplate>

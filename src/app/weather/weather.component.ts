@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, Observable, switchMap } from 'rxjs';
 import { WeatherApiService } from '../services/weather-api.service';
+import { WeatherResponse } from '../models/response.model';
 
 @Component({
   selector: 'app-weather',
@@ -28,7 +29,7 @@ export class WeatherComponent {
     if (this.searchForm.valid) {
       this.city = this.searchForm.value.city || '';
       this.weatherService.getWeather(this.city || '').subscribe({
-        next: (data) => {
+        next: (data: WeatherResponse) => {
           this.weatherSelected = data;
           this.saveHistory(this.city);
         },
