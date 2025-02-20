@@ -1,0 +1,30 @@
+<div *ngIf="data; else errorTemplate">
+  <h2>
+    Clima en {{ data.location.name }}, {{ data.location.country }}
+  </h2>
+
+  <div class="weather-info">
+    <div class="temperature">
+      <p>
+        {{ data.current.temp_c }}°C /
+        {{ data.current.temp_f }}°F
+      </p>
+    </div>
+    <div class="condition">
+      <img [src]="data.current.condition.icon" [alt]="data.current.condition.text" />
+      <p>{{ data.current.condition.text }}</p>
+    </div>
+  </div>
+
+  <div class="details">
+    <p>Viento: {{ data.current.wind_kph }} km/h</p>
+    <p>Humedad: {{ data.current.humidity }}%</p>
+    <p>Hora local: {{ data.location.localtime }}</p>
+  </div>
+</div>
+
+<ng-template #errorTemplate>
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+</ng-template>
