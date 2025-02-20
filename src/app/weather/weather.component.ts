@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, Observable, switchMap } from 'rxjs';
 import { WeatherApiService } from '../services/weather-api.service';
 import { WeatherResponse } from '../models/response.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-weather',
@@ -18,7 +19,7 @@ export class WeatherComponent {
   });
   suggestions$: Observable<any>;
 
-  constructor(private weatherService: WeatherApiService) {
+  constructor(private weatherService: WeatherApiService, private router: Router) {
     this.suggestions$ = this.searchForm.get('city')!.valueChanges.pipe(
       debounceTime(300),
       switchMap((value) => this.weatherService.getCitySuggestions(value || ''))
@@ -53,5 +54,9 @@ export class WeatherComponent {
   selectCity(city: string) {
     this.searchForm.get("city")?.setValue(city);
     this.onSubmit();
+  }
+
+  navigateFavorites() {
+    this.router.navigate(['/favorites'])
   }
 }

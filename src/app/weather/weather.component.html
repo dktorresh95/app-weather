@@ -8,6 +8,6 @@
     </ul>
     <button type="submit" [disabled]="searchForm.invalid" >Buscar</button>
 </form>
-
+<button (click)="navigateFavorites()">Ver favoritos</button>
 <app-history-list (citySelected)="selectCity($event)"></app-history-list>
 <app-weather-results [data]="weatherSelected" [errorMessage]="errorMessage" [city]="city"></app-weather-results>
