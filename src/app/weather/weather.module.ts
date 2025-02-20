@@ -6,12 +6,14 @@ import { WeatherComponent } from './weather.component';
 import { WeatherResultsComponent } from './weather-results/weather-results.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HistoryModule } from '../history/history.module';
+import { WeatherTableComponent } from './weather-table/weather-table.component';
 
 
 @NgModule({
   declarations: [
     WeatherComponent,
-    WeatherResultsComponent
+    WeatherResultsComponent,
+    WeatherTableComponent
   ],
   imports: [
     CommonModule,

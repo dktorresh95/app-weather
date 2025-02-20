@@ -1,0 +1,19 @@
+<table>
+    <thead>
+      <tr>
+        <th>Ciudad</th>
+        <th>Temperatura (°C)</th>
+        <th>Estado</th>
+        <th>Hora Local</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of history">
+        <td>{{ city.location.name }}</td>
+        <td>{{ city.current.temp_c }}°C</td>
+        <td>{{ city.current.condition.text }}</td>
+        <td>{{ city.location.localtime }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

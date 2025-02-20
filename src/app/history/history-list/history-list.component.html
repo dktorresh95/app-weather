@@ -1,8 +1,8 @@
 <div *ngIf="history.length > 0">
   <h3>Historial de búsqueda</h3>
   <ul>
-    <li *ngFor="let city of history" (click)="onSelectCity(city)">
-      {{ city }}
+    <li *ngFor="let city of history" (click)="onSelectCity(city.location.name)">
+      {{ city.location.name }}
     </li>
   </ul>
   <button (click)="clearHistory()">Limpiar historial</button>

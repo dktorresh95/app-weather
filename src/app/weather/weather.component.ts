@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, Observable, switchMap } from 'rxjs';
 import { WeatherApiService } from '../services/weather-api.service';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css'],
 })
-export class WeatherComponent {
+export class WeatherComponent implements OnInit{
   weatherSelected: any = null;
   errorMessage: string = '';
   city: string = '';
@@ -18,6 +18,7 @@ export class WeatherComponent {
     city: new FormControl('', [Validators.required, Validators.minLength(2)]),
   });
   suggestions$: Observable<any>;
+  history: any[] = [];
 
   constructor(private weatherService: WeatherApiService, private router: Router) {
     this.suggestions$ = this.searchForm.get('city')!.valueChanges.pipe(
@@ -26,13 +27,16 @@ export class WeatherComponent {
     );
   }
 
+  ngOnInit() {
+    this.loadHistory();
+  }
   onSubmit() {
     if (this.searchForm.valid) {
       this.city = this.searchForm.value.city || '';
       this.weatherService.getWeather(this.city || '').subscribe({
         next: (data: WeatherResponse) => {
           this.weatherSelected = data;
-          this.saveHistory(this.city);
+          this.saveHistory(this.city, this.weatherSelected);
         },
         error: () => {
           this.weatherSelected = null;
@@ -42,11 +46,12 @@ export class WeatherComponent {
     }
   }
 
-  saveHistory(city: any) {
+  saveHistory(city: string, weatherSelected: WeatherResponse) {
     let history = JSON.parse(localStorage.getItem("weatherCities") || '[]');
-    if (!history.includes(city)) {
-      history.unshift(city);
-      if (history.length > 10) history.pop();
+    const exists = history.some((entry: any) => entry.city === city);
+    if (!exists) {
+      history.unshift(weatherSelected);
+      if (history.length > 10) history.pop(); // Limitar a 10 registros
       localStorage.setItem('weatherCities', JSON.stringify(history));
     }
   }
@@ -58,5 +63,11 @@ export class WeatherComponent {
 
   navigateFavorites() {
     this.router.navigate(['/favorites'])
+  }
+
+  loadHistory() {
+    const storedHistory = localStorage.getItem('weatherCities');
+    this.history = storedHistory ? JSON.parse(storedHistory) : [];
+    console.log(this.history)
   }
 }

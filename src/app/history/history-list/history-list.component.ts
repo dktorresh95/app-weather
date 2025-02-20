@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { WeatherResponse } from 'src/app/models/response.model';
 
 @Component({
   selector: 'app-history-list',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./history-list.component.css']
 })
 export class HistoryListComponent {
-  history: string[] = [];
+  history: WeatherResponse[] = [];
   @Output() citySelected = new EventEmitter<string>();
 
   constructor() {
