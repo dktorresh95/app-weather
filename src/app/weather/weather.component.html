@@ -9,7 +9,10 @@
     <button type="submit" [disabled]="searchForm.invalid" >Buscar</button>
 </form>
 <button (click)="navigateFavorites()">Ver favoritos</button>
+<div>
+    <button (click)="changeView()">Ver tabla últimas búsquedas</button>
+</div>
 <app-history-list (citySelected)="selectCity($event)"></app-history-list>
-<app-weather-results [data]="weatherSelected" [errorMessage]="errorMessage" [city]="city"></app-weather-results>
+<app-weather-results *ngIf="!viewTable" [data]="weatherSelected" [errorMessage]="errorMessage" [city]="city"></app-weather-results>
 
-<app-weather-table *ngIf="history.length > 0" [history]="history"></app-weather-table>
+<app-weather-table *ngIf="history.length > 0 && viewTable" [history]="history"></app-weather-table>

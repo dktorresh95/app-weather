@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css'],
 })
-export class WeatherComponent implements OnInit{
+export class WeatherComponent{
   weatherSelected: any = null;
   errorMessage: string = '';
   city: string = '';
@@ -19,7 +19,7 @@ export class WeatherComponent implements OnInit{
   });
   suggestions$: Observable<any>;
   history: any[] = [];
-
+  viewTable: boolean = false;
   constructor(private weatherService: WeatherApiService, private router: Router) {
     this.suggestions$ = this.searchForm.get('city')!.valueChanges.pipe(
       debounceTime(300),
@@ -27,14 +27,13 @@ export class WeatherComponent implements OnInit{
     );
   }
 
-  ngOnInit() {
-    this.loadHistory();
-  }
+
   onSubmit() {
     if (this.searchForm.valid) {
       this.city = this.searchForm.value.city || '';
       this.weatherService.getWeather(this.city || '').subscribe({
         next: (data: WeatherResponse) => {
+          this.viewTable = false;
           this.weatherSelected = data;
           this.saveHistory(this.city, this.weatherSelected);
         },
@@ -69,5 +68,10 @@ export class WeatherComponent implements OnInit{
     const storedHistory = localStorage.getItem('weatherCities');
     this.history = storedHistory ? JSON.parse(storedHistory) : [];
     console.log(this.history)
+  }
+
+  changeView() {
+    this.viewTable = true;
+    this.loadHistory();
   }
 }
